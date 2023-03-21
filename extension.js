@@ -6,7 +6,7 @@ const path = require('path');
 // Activate the extension
 function activate(context) {
   // Register the command
-  const disposable = vscode.commands.registerCommand('findDependencies.execute', (folder) => {
+  const disposable = vscode.commands.registerCommand('peerdependenciesfinder.execute', (folder) => {
     // Get the folder path
     const folderPath = folder.fsPath;
 
