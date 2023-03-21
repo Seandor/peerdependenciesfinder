@@ -60,11 +60,11 @@ function searchJsFilesAndFindDependencies(folderPath) {
     return dependencies;
   }
 
-  // Start searching for JS files recursively
-  const allDependencies = searchJsFilesRecursively(folderPath).sort();
+  // Start searching for JS files recursively and remove duplicate dependencies
+  const allDependencies = [...new Set(searchJsFilesRecursively(folderPath))].sort();
 
-  // Check for package.json in the root directory
-  const packageJsonPath = path.join(folderPath, 'package.json');
+  // Locate package.json at the same level as the folder path
+  const packageJsonPath = path.resolve(folderPath, '..', 'package.json');
   if (fs.existsSync(packageJsonPath)) {
     // Read package.json and parse it
     const packageJsonData = fs.readFileSync(packageJsonPath, 'utf8');
