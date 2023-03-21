@@ -53,7 +53,12 @@ function searchJsFilesAndFindDependencies(folderPath) {
       // Ignore relative imports
       if (!match[1].startsWith('.')) {
         // Add the dependency to the array
-        dependencies.push(match[1]);
+        const dependency = match[1].split('/')[0];
+        if (dependency.startsWith('@')) {
+          dependencies.push(dependency + '/' + match[1].split('/')[1]);
+        } else {
+          dependencies.push(dependency);
+        }
       }
     }
 

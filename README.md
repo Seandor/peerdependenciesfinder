@@ -18,13 +18,17 @@ None.
 
 ## Known Issues
 
-- Duplicate dependencies if there's imports from a specific path.
+- None
 
 ## Release Notes
 
 ### 0.0.6
 
 Initial release of peer dependencies finder.
+
+### 1.0.0
+
+Fix duplicate dependencies if the imports are from a specific path.
 
 ---
 

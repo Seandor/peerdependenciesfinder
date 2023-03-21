@@ -2,7 +2,7 @@
   "name": "peerdependenciesfinder",
   "displayName": "Peer Dependencies Finder",
   "description": "Find peer dependencies and update package.json",
-  "version": "0.0.6",
+  "version": "1.0.0",
   "publisher": "Seandor",
   "engines": {
     "vscode": "^1.76.2"
