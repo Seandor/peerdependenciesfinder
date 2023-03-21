@@ -1,8 +1,8 @@
 {
   "name": "peerdependenciesfinder",
   "displayName": "PeerDependenciesFinder",
-  "description": "Find peer dependencies and insert it into package.json for CCUI.",
-  "version": "0.0.5",
+  "description": "Find peer dependencies and update package.json",
+  "version": "0.0.6",
   "publisher": "Seandor",
   "engines": {
     "vscode": "^1.76.2"
