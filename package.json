@@ -4,7 +4,7 @@
   "description": "Find peer dependencies and insert it into package.json for CCUI.",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.76.0"
+    "vscode": "^1.72.0"
   },
   "repository": {
     "type": "git",
