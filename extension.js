@@ -61,7 +61,7 @@ function searchJsFilesAndFindDependencies(folderPath) {
   }
 
   // Start searching for JS files recursively and remove duplicate dependencies
-  const allDependencies = [...new Set(searchJsFilesRecursively(folderPath))].sort();
+  const allDependencies = [...new Set(searchJsFilesRecursively(folderPath))];
 
   // Locate package.json at the same level as the folder path
   const packageJsonPath = path.resolve(folderPath, '..', 'package.json');
@@ -76,11 +76,25 @@ function searchJsFilesAndFindDependencies(folderPath) {
       packageJson.peerDependencies[dependency] = '*';
     });
 
+    // Sort the peerDependencies
+    const sortedPeerDependencies = Object.keys(packageJson.peerDependencies)
+      .sort()
+      .reduce((sortedObj, key) => {
+        sortedObj[key] = packageJson.peerDependencies[key];
+        return sortedObj;
+      }, {});
+
+    // Update the package.json with sorted peerDependencies
+    packageJson.peerDependencies = sortedPeerDependencies;
+
     // Write the updated package.json back to the file
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
+
+    // Show a success message when updating the file successfully
+    vscode.window.showInformationMessage('package.json updated successfully with peerDependencies.');
   } else {
     // Show a warning message if package.json is not found
-    vscode.window.showWarningMessage('package.json notfound in the root directory. Unable to add dependencies to peerDependencies.');
+    vscode.window.showWarningMessage('package.json not found in the root directory. Unable to add dependencies to peerDependencies.');
   }
 }
 
