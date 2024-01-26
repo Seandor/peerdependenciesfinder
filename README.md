@@ -30,6 +30,10 @@ Initial release of peer dependencies finder.
 
 Fix duplicate dependencies if the imports are from a specific path.
 
+### 1.0.1
+
+Add an empty space in file ending to avoid lint errors.
+
 ---
 
 

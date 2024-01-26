@@ -95,6 +95,9 @@ function searchJsFilesAndFindDependencies(folderPath) {
     // Write the updated package.json back to the file
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
 
+    // Add an empty line to the package.json file
+    fs.appendFileSync(packageJsonPath, '\n');
+
     // Show a success message when updating the file successfully
     vscode.window.showInformationMessage('package.json updated successfully with peerDependencies.');
   } else {
